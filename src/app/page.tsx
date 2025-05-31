@@ -1,6 +1,7 @@
 'use client'
 
 import {useState, useEffect} from "react";
+import Image from "next/image";
 import {FaGithub, FaLinkedin, FaFacebook, FaReddit} from "react-icons/fa";
 
 const sections = [
@@ -132,10 +133,13 @@ const OverviewSection = () => {
                         onClick={togglePersona}>
                         <div
                             className="w-64 h-64 md:w-96 md:h-96 rounded-full border-8 border-neutral-800/50 overflow-hidden shadow-2xl ring-4 ring-neutral-700/30 ring-offset-8 ring-offset-[#0a0a0a]">
-                            <img
+                            <Image
                                 src={showOnlinePersona ? personas.online.image : personas.personal.image}
                                 alt={showOnlinePersona ? personas.online.name : personas.personal.name}
                                 className="w-full h-full object-cover"
+                                width={384}
+                                height={384}
+                                priority
                             />
                         </div>
                     </div>
@@ -188,10 +192,12 @@ const AboutMeSection = () => {
                 <div className="flex flex-col md:flex-row gap-12">
                     {/* First column (25%) */}
                     <div className="md:w-1/4 flex flex-col items-center justify-center gap-6">
-                        <img
+                        <Image
                             src="/wait-a-minute-who-are-you.gif"
                             alt="wait a minute... who are you?"
                             className="w-full max-w-[300px] rounded-lg"
+                            width={300} // from max-w-[300px]
+                            height={169}
                         />
                         <p className="font-mono italic text-neutral-200 text-xl text-center">
                             &quot;wait, who are you anyway?&quot;
@@ -219,17 +225,23 @@ const CharacterSection = () => {
         {
             title: "Curious",
             description: "In this world, there will always be something that you just don't know. So why not have the drive to learn as much as possible? We've only got one life. I don't settle with surface-level understanding--I MUST understand how something works.",
-            image: "/curious.gif"
+            image: "/curious.gif",
+            width: 256,
+            height: 64
         },
         {
             title: "Open-minded",
             description: "This goes hand in hand with being curious. New ideas are being invented everyday. Therefore, I'm willing to understand and to compromise with other people because you're going against an AVALANCHE of new beliefs, frameworks, and philosophies. Diversity is what keeps humans, human. Therefore, it's important to be open-minded.",
-            image: "/open-minded.gif"
+            image: "/open-minded.gif",
+            width: 256,
+            height: 64
         },
         {
             title: "Ambitious",
             description: "DON'T LET YOUR DREAMS BE DREAMS! Every time you let go of an idea you're letting go of an entire fountain of opportunity. Words are just words, DO THEM! TAKE ACTION! The Steve Jobs' and the Bill Gates' didn't invent Apple and Microsoft by just sitting around, did they?",
-            image: "/ambitious.gif"
+            image: "/ambitious.gif",
+            width: 256,
+            height: 64
         }
     ];
 
@@ -244,7 +256,7 @@ const CharacterSection = () => {
                                 key={char.title}
                                 className="characteristic-card bg-gradient-to-br from-gray-50 to-gray-100 p-6 rounded-xl shadow-lg border border-gray-200 transform hover:scale-105 transition-transform duration-300 flex items-center gap-4"
                             >
-                                <img src={char.image} alt={char.title} className="w-64 h-16 rounded-md shadow-md" />
+                                <Image src={char.image} alt={char.title} className="w-64 h-16 rounded-md shadow-md" width={char.width} height={char.height} />
                                 <div>
                                     <h3 className="text-2xl font-bold mb-3 bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                                         {char.title}
@@ -259,10 +271,12 @@ const CharacterSection = () => {
 
                     {/* Left column (75%) - Meme and Quote */}
                     <div className="md:w-1/4 flex flex-col items-center justify-center">
-                        <img
+                        <Image
                             src="/the-office-eli5.gif"
                             alt="why don't you explain this to me like i'm 5?"
                             className="w-full max-w-[600px] rounded-lg shadow-lg mb-6"
+                            width={600}
+                            height={338}
                         />
                         <p className="font-mono italic text-gray-700 text-xl text-center">
                             &quot;curious, open-minded, and ambitious... can you explain what that means?&quot;
@@ -280,16 +294,22 @@ const TechnicalSkillsSection = () => {
             image: "/rust-logo.png",
             title: "Rust Development",
             description: `I am a proficient Rust developer with four years of experience, having created multiple open-source crates, including \`mcsoft_auth\`, \`build_script\`, and \`try-drop\`, among others.`,
+            width: 192,
+            height: 192
         },
         {
             image: "/python-logo.png",
             title: "Python Development",
             description: `While Rust is my primary language, I am also skilled in Python development. One example is \`oom-notifier\`, a utility for Linux that alerts you when the OOM (Out of Memory) score of processes becomes too high.`,
+            width: 192,
+            height: 192
         },
         {
             image: "/os-api-logo.png",
             title: "OS-Specific API Development",
             description: `Despite what my GitHub handle might suggest, I also have experience developing software for both Windows and macOS in addition to Linux, leveraging platform-specific APIs when needed.`,
+            width: 192,
+            height: 192
         },
     ];
 
@@ -301,7 +321,7 @@ const TechnicalSkillsSection = () => {
             <div className="flex flex-wrap justify-center gap-12">
                 {skills.map((skill) => (
                     <div key={skill.title} className="flex flex-col items-center text-center max-w-xs">
-                        <img src={skill.image} alt={skill.title} className="w-48 h-48 mb-4"/>
+                        <Image src={skill.image} alt={skill.title} className="w-48 h-48 mb-4" width={skill.width} height={skill.height}/>
                         <h3 className="text-xl font-bold mb-2">{skill.title}</h3>
                         <p className="text-gray-300">{skill.description}</p>
                     </div>
