@@ -1,8 +1,9 @@
 'use client'
 
-import {useState, useEffect} from "react";
+import React, {useState, useEffect} from "react";
 import Image from "next/image";
 import {FaGithub, FaLinkedin, FaFacebook, FaReddit} from "react-icons/fa";
+import emailjs from '@emailjs/browser';
 
 const sections = [
     {id: 'overview', label: 'overview'},
@@ -332,6 +333,48 @@ const TechnicalSkillsSection = () => {
 }
 
 const ContactSection = () => {
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        message: '',
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState('');
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prevData) => ({ ...prevData, [name]: value }));
+    };
+
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setSubmitStatus('');
+
+        try {
+            const result = await emailjs.send(
+                "service_e4iqz8c",
+                "template_jz2ggcl",
+                {
+                    name: formData.name,
+                    email: formData.email,
+                    time: new Date().toLocaleString(),
+                    message: formData.message,
+                },
+                "v3WkmkyHvDqv2s9hp"
+            );
+
+            console.log("Email sent successfully: ", result);
+            setSubmitStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+        } catch (error) {
+            console.error("Error sending email: ", error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
+    }
+
     return (
         <section id="contact" className="bg-[#0a0a0a] py-20">
             <div className="max-w-7xl mx-auto px-8">
@@ -384,12 +427,29 @@ const ContactSection = () => {
                     {/* Contact Form */}
                     <div className="bg-neutral-900/50 p-6 rounded-lg border border-neutral-800">
                         <h3 className="text-xl font-bold text-neutral-200 mb-4">Send a Message</h3>
-                        <form className="space-y-4">
+
+                        {/* Status Messages */}
+                        {submitStatus === 'success' && (
+                            <div className="mb-4 p-3 bg-green-900/50 border border-green-700 rounded-lg text-green-200">
+                                Message has been sent successfully! I will get back to you as soon as possible.
+                            </div>
+                        )}
+                        {submitStatus === 'error' && (
+                            <div className="mb-4 p-3 bg-red-900/50 border border-red-700 rounded-lg text-red-200">
+                                Failed to send the message. Please try again later or contact me directly.
+                            </div>
+                        )}
+
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-medium text-neutral-400 mb-1">Name</label>
                                 <input
                                     type="text"
                                     id="name"
+                                    name="name"
+                                    value={formData.name}
+                                    onChange={handleInputChange}
+                                    required
                                     className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-600 text-neutral-200"
                                     placeholder="Your name"
                                 />
@@ -399,6 +459,9 @@ const ContactSection = () => {
                                 <input
                                     type="email"
                                     id="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
                                     className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-600 text-neutral-200"
                                     placeholder="your@email.com"
                                 />
@@ -407,6 +470,10 @@ const ContactSection = () => {
                                 <label htmlFor="message" className="block text-sm font-medium text-neutral-400 mb-1">Message</label>
                                 <textarea
                                     id="message"
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    required
                                     rows={4}
                                     className="w-full px-4 py-2 bg-neutral-800 border border-neutral-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-neutral-600 text-neutral-200"
                                     placeholder="Your message..."
@@ -416,7 +483,7 @@ const ContactSection = () => {
                                 type="submit"
                                 className="w-full py-2 px-4 bg-neutral-700 hover:bg-neutral-600 text-neutral-200 font-medium rounded-lg transition-colors duration-200"
                             >
-                                Send Message
+                                {isSubmitting ? 'Sending...' : 'Send Message'}
                             </button>
                         </form>
                     </div>
