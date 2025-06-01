@@ -234,13 +234,13 @@ const ProjectsSection = () => {
         {
             title: "Flightless SMC",
             description: "Manage a (dockerized) Minecraft server through the Minecraft game itself, allowing users to start, stop, and restart the server. Includes Discord integration, allowing users to link their Discord accounts to the server.",
-            tech: ["Rust", "Docker", "Minecraft", "Server Management"],
+            tech: ["Rust", "Docker", "Server Management"],
             repoUrl: "https://github.com/ALinuxPerson/flightless-smc",
         },
         {
             title: "Raphy",
             description: "A client-server application designed for managing and interacting with a Java server process across different modes of operation.",
-            tech: ["Rust", "Tauri", "TypeScript", "Client-Server Architecture", "Process Management"],
+            tech: ["Rust", "Tauri", "Client-Server Architecture"],
             repoUrl: "https://github.com/ALinuxPerson/raphy",
         },
         {
@@ -258,7 +258,7 @@ const ProjectsSection = () => {
         {
             title: "hv_sock crate",
             description: "A Rust library providing a cross-platform API for Hyper-V sockets, enabling efficient communication between host and guest systems in virtualized environments.",
-            tech: ["Rust", "Linux", "Windows", "Hyper-V", "Virtualization", "Cross-Platform"],
+            tech: ["Rust", "Hyper-V", "Virtualization"],
             repoUrl: "https://github.com/ALinuxPerson/hv_sock",
         },
         {
