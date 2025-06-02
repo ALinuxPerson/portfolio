@@ -157,7 +157,7 @@ const OverviewSection = () => {
                                 Aspiring Software Developer
                             </p>
                             <p className="text-lg md:text-xl text-neutral-300">
-                                Passionate about Rust, robotics, AI/ML, and embedded systems.
+                                Passionate about Rust and everything computers and technology.
                             </p>
                         </div>
 
