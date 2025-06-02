@@ -476,7 +476,7 @@ const FutureGoalsSection = () => {
                 </div>
                 <div className="text-center mt-8 p-6 bg-sky-500/10 border border-sky-500/20 rounded-lg">
                     <p className="text-sky-300 font-semibold text-lg">
-                        🚀 Currently seeking opportunities where Rust meets robots and AI!
+                        🚀 Currently seeking job opportunities!
                     </p>
                     <p className="text-neutral-400 mt-2">
                         Open to collaborating on interesting projects and always eager to learn from experienced teams.
