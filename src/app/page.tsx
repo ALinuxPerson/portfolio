@@ -138,7 +138,7 @@ const OverviewSection = () => {
                         <div
                             className="w-56 h-56 md:w-80 md:h-80 rounded-full border-4 border-neutral-700/60 overflow-hidden shadow-xl ring-2 ring-neutral-600/40 ring-offset-4 ring-offset-[#0a0a0a]">
                             <Image
-                                src="/profile-picture.jpg"
+                                src="/profile-picture.png"
                                 alt="Michael Baterna"
                                 className="w-full h-full object-cover"
                                 width={320} // md:w-80
@@ -164,7 +164,7 @@ const OverviewSection = () => {
                         {/* Action Buttons */}
                         <div className="flex flex-col sm:flex-row gap-4 mt-6">
                             <a
-                                href="/placeholder-resume.pdf" // Placeholder link for resume
+                                href="https://github.com/ALinuxPerson/ALinuxPerson/raw/refs/heads/master/resume.pdf"
                                 download
                                 className="px-8 py-3 bg-sky-500 hover:bg-sky-600 text-white font-semibold rounded-lg shadow-md transition-colors duration-300 text-center"
                             >
