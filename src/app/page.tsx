@@ -275,6 +275,27 @@ const ProjectsSection = () => {
                 <h2 className="text-3xl md:text-4xl font-bold text-neutral-100 mb-12 text-center font-mono">
                     {'// My Work'}
                 </h2>
+                
+                {/* Open Source Impact Statistics */}
+                <div className="mb-12 bg-gradient-to-r from-sky-500/10 to-blue-500/10 border border-sky-500/20 rounded-lg p-6 text-center">
+                    <div className="flex flex-col md:flex-row justify-center items-center gap-8">
+                        <div className="flex items-center gap-3">
+                            <div className="w-12 h-12 bg-sky-500/20 rounded-full flex items-center justify-center">
+                                <svg className="w-6 h-6 text-sky-400" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0L1.5 6v12l10.5 6 10.5-6V6L12 0zm0 2.18L20.32 7 12 11.82 3.68 7 12 2.18zM3 8.5l8 4.6v8.4L3 16.9V8.5zm18 8.4l-8 4.6v-8.4l8-4.6v8.4z"/>
+                                </svg>
+                            </div>
+                            <div>
+                                <div className="text-2xl md:text-3xl font-bold text-sky-400">45,000+</div>
+                                <div className="text-sm text-neutral-300">crates.io Downloads</div>
+                            </div>
+                        </div>
+                        <div className="text-neutral-400 text-sm max-w-md">
+                            Contributing to the Rust ecosystem with open-source crates used by developers worldwide
+                        </div>
+                    </div>
+                </div>
+
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project, index) => (
                         <div key={index} className="bg-[#0a0a0a] border border-neutral-800 rounded-lg shadow-xl overflow-hidden flex flex-col transform hover:scale-[1.02] transition-transform duration-300">
